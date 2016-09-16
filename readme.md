@@ -90,5 +90,5 @@ To make this happen you need to have an application in the Sinch dashboard and a
 
 Call the number and start seeing real live requests from the sinch plattform.
 
-
+Hope you found this helpful and if you have any questions dm me on @cjsinch  
    
