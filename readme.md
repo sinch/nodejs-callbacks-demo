@@ -1,11 +1,11 @@
 # Get your second number and test sinch Callbacks/webhooks with ngrok.
 
-Today I will show how you can redirect a Sinch number to your own mobile number, having a few friends in Sweden (and my boss) I thought it would be cool to have a Swedish number that is redirected to my US mobile. I also wanted to show you the awesome tool ngrok.
+Today I will show how you can redirect a Sinch number to your own mobile number. Since I have a few friends in Sweden (and my boss), I thought it would be cool to have a Swedish number that can be redirected to my US mobile. 
 
-One of the harder things when you do integration with webhooks/callbacks is that the remote server needs to be able to access your server, and usually you done have your dev server available as a webs server on the internet, so you have to rely on dynamic DNS or a similar solution. One awesome way to solve this is to use [ngrok](https://ngrok.com/ "ngrok"). It sets up a tunnel. It has an awesome other feature that enables you to see all requests and responses with data. 
+Before we dive in, I want to show you the awesome tool, ngrok. One of the harder things when you do an integration with webhooks/callbacks is that the remote server needs to be able to access your server. Usually you don't have your dev server available as a web server on the internet, so you have to rely on dynamic DNS or a similar solution. One awesome way to solve this is to use [ngrok](https://ngrok.com/ "ngrok"). It sets up a tunnel and enables you to see all requests and responses with data. 
 
 ## Getting started
-In this example we are going to build a simple node app that will respond witch SVAML to connect any call to a number to my number here in SF. To read more about different events and what you can respond read the docs here
+In this example we are going to build a simple node app that will respond with SVAML to connect any call to a chosen number to my SF-based mobile. To read more about different events and how you can respond, read the docs here
 [http://sinch.com/docs/voice/rest](http://sinch.com/docs/voice/rest "SVAML") 
 
 Create a file and call it app.js
@@ -61,11 +61,11 @@ var server = http.createServer(function (request, response) {
 });
 server.listen(5500);
 ```
-As you see we just read the body of the request, look if its an incoming call (start of call) or if someone answered and reply with the correct action to connect the call. We start the server on port 5500.  
+As you can see, we just need to read the body of the request, look to see if it's an incoming call (start of call) or if someone answered, and reply with the correct action to connect the call. We start the server on port 5500.  
 
-Before we continue, install ngrok https://ngrok.com/download its a one file app so no installer, unpack it to a folder of your choice (I love ngrok so i also put in in path so I use it easy anywhere). 
+Before we continue, install ngrok https://ngrok.com/download. It's a one file app with no installer. Unpack it to a folder of your choice (I love ngrok so I also put in in path so I can access it easily from anywhere). 
 
-At least on windows, you need to terminals, one for node and one for ngrok,start your node app 
+On windows, you need two terminals, one for node and one for ngrok. Start your node app 
 ```bash
 node app.js
 ```
@@ -73,22 +73,22 @@ start ngrok
 ```bash
 ngrok http 5500
 ```
-After starting ngrok you should see the dynamic domain name you where given, open a browser and point it to http://localhost:4040/ and you should see this. 
+After starting ngrok you should see the dynamic domain name you were given. Open a browser and point it to http://localhost:4040/ and you should see this: 
 ![](images/ngrokportal.png)
-Take not of the url, before I will hook up a real phonenumber number in the sinch portal I want to make sample request to the url head over to http://svaml.net/simulator to simulate a incoming call event
+Take note of the url. Before I connect up a real phone number in the Sinch portal, I want to make a sample request to the url. Head over to http://svaml.net/simulator to simulate an incoming call event.
 ![](images/svamlnet.png)
-Change the url to url from ngrok. hit test and you now you should see  in your http://localhost:4040/ what was posted to the server and what the respone was. In this case all was good so no problem there. But the awesome thing is when stuff dont work as you wanted. You can then use your favorite node debugger and step thru code from real integration traffic. 
+Change the url to the ngrok url. Hit test and you should now see what was posted to the server and what the response was in your http://localhost:4040/. Everything looks good! If something's not working the way you wanted, you can use your favorite node debugger and step thru code from real integration traffic. Awesome, right? 
 
 ## Wrapping up
-To  wrap this baby up lets add a number to sweden as I mentioned in the beginning. 
+Let's wrap this up and add a number to Sweden as I mentioned at the start. 
 
-To make this happen you need to have an application in the Sinch dashboard and a phone number (DM me @cjsinch if you need some more test credits) 
+To make this happen you must have an application in the Sinch dashboard and a phone number (DM me @cjsinch if you need some more test credits) 
 1. Rent a number with voice capability in the [rent number](https://www.sinch.com/dashboard/#/numbers) 
-2. Go to your app [https://www.sinch.com/dashboard/#/apps](https://www.sinch.com/dashboard/#/apps) or create one if you dont have one. 
-3. Configure teh voice tab by adding your newly rented number and add your ngrok url
+2. Go to your app [https://www.sinch.com/dashboard/#/apps](https://www.sinch.com/dashboard/#/apps) or create one 
+3. Configure the voice tab by adding your newly rented number and add your ngrok url
 ![](images/sinchdashboard.png)
 
-Call the number and start seeing real live requests from the sinch plattform.
+Call the number and start seeing real live requests from the Sinch plattform.
 
 Hope you found this helpful and if you have any questions dm me on @cjsinch  
    
