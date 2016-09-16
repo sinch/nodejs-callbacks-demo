@@ -3,7 +3,10 @@
 Today I will show how you can redirect a Sinch number to your own mobile number, having a few friends in Sweden (and my boss) I thought it would be cool to have a Swedish number that is redirected to my US mobile. I also wanted to show you the awesome tool ngrok.
 
 One of the harder things when you do integration with webhooks/callbacks is that the remote server needs to be able to access your server, and usually you done have your dev server available as a webs server on the internet, so you have to rely on dynamic DNS or a similar solution. One awesome way to solve this is to use [ngrok](https://ngrok.com/ "ngrok"). It sets up a tunnel. It has an awesome other feature that enables you to see all requests and responses with data. 
-<video width="320" height="240" src="https://giphy.com/gifs/l0MYw9nh8qcoIyCju/html5"/>
+<video width="320" height="240" controls>
+  <source src="https://giphy.com/gifs/l0MYw9nh8qcoIyCju/html5" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 
 ## Getting started
