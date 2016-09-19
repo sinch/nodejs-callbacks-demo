@@ -1,8 +1,8 @@
-# Get your second number and test sinch Callbacks/webhooks with ngrok.
+# Getting a second number and testing Sinch Callbacks/Webhooks with ngrok.
 
 Today I will show how you can redirect a Sinch number to your own mobile number. Since a few friends (and my boss) live in Sweden, I thought it'd be cool to have a Swedish number that can be redirected to my US mobile. 
 
-Before we dive in, I want to show you the awesome tool, ngrok. One of the harder things when you do an integration with webhooks/callbacks is that the remote server needs to be able to access your server. Usually you don't have your dev server available as a web server on the internet, so you have to rely on dynamic DNS or a similar solution. One awesome way to solve this is to use [ngrok](https://ngrok.com/ "ngrok"). It sets up a tunnel and enables you to see all requests and responses with data. 
+Before we dive in, I want to show you the awesome tool, ngrok. One of the more difficult aspects of an integration with webhooks/callbacks is that the remote server needs to be able to access your server. Typically, your dev server is not available as a web server on the internet, so you have to rely on dynamic DNS or a similar solution. You can easily remedy this with the use of [ngrok](https://ngrok.com/ "ngrok"). It sets up a tunnel and enables you to see all requests and responses with data. 
 
 ## Getting started
 In this example we are going to build a simple node app that will respond with SVAML to connect any call to a chosen number to my SF-based mobile. To read more about different events and how you can respond, read the docs here
